@@ -32,9 +32,11 @@ rockButtonElm.addEventListener('click', function(){
     }
     else if (butterThrowResult === "Paper") {
         botQuoteElm.innerText = "rockVelocity !== requiredVelocity, Paper !== torn";
+        playerHpSpanElm.innerText = playerHp--;
     }
     else if (butterThrowResult === "Scissor") {
         botQuoteElm.innerText = "rockHeft > scissorHeft, scissorCrushed: true";
+        butterHpSpanElm.innerText = butterHp--;
     }
 })
 
@@ -44,12 +46,14 @@ paperButtonElm.addEventListener('click', function(){
     butterThrowResult = butterThrow();
     if (butterThrowResult === "Rock") {
         botQuoteElm.innerText = "paperArea > rockDensity, rockNeutralization: true";
+        butterHpSpanElm.innerText = butterHp--;
     }
     else if (butterThrowResult === "Paper") {
         botQuoteElm.innerText = "Paper === Paper, winResult = null";
     }
     else if (butterThrowResult === "Scissor") {
         botQuoteElm.innerText = "paperIntegrity !== durable, Paper === torn";
+        playerHpSpanElm.innerText = playerHp--;
     }
 })
 
@@ -59,9 +63,11 @@ scissorButtonElm.addEventListener('click', function(){
     butterThrowResult = butterThrow();
     if (butterThrowResult === "Rock") {
         botQuoteElm.innerText = "scissorSharp < rockDensity, scissorBroken = true";
+        playerHpSpanElm.innerText = playerHp--;
     }
     else if (butterThrowResult === "Paper") {
         botQuoteElm.innerText = "scissorSharp > paperIntegrity, Paper === torn";
+        butterHpSpanElm.innerText = butterHp--;
     }
     else if (butterThrowResult === "Scissor") {
         botQuoteElm.innerText = "Scissor === Scissor, winResult = null";
