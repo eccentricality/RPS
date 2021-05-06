@@ -26,8 +26,8 @@ p {
 }
 
 img {
-    max-width: 200px;
-    height: auto;
+    width: 200px;
+    height: 180px;
     border: 2px solid var(--dtText);
     padding: 30px;
     background-color: var(--dtPurple1);
