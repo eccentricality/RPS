@@ -18,24 +18,24 @@
         <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
     </head>
 
-    <body>
+    <body id="rpsBody">
 
         <container>
             <player>
                 <h1 class="butterQuote"></h1>
                 <br/><br/><img src="./assets/images/butter.png" id="playerImg"/>
                 <img src="./assets/images/rock.png" id="playerResultImg"/>
-                <p id="butterHealthPoint">Butter HP: 20</p>
+                <p id="butterHealthPoint">Butter HP: <span id="butterHpSpan">20</span></p>
             </player>
             <bot>
                 <h1 id="botQuote">What is my purpose?</h1>
-                <button class="rpsButton">Rock</button>
-                <button class="rpsButton">Paper</button>
-                <button class="rpsButton">Scissor</button>
+                <button id="rockButton" class="rpsButton">Rock</button>
+                <button id="paperButton" class="rpsButton">Paper</button>
+                <button id="scissorButton" class="rpsButton">Scissor</button>
                 <p id="botSpeech">Oh...my god...</p>
                 <img src="./assets/images/rock.png" id="botResultImg"/>
                 <img src="./assets/images/rpsBot.png" id="botImg"/>
-                <p id="botHealthPoint">Player HP: 20</p>
+                <p id="botHealthPoint">Player HP: <span id="playerHpSpan">20</span></p>
             </bot>
             <br/>
             <br/>
