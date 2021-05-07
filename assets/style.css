@@ -100,11 +100,12 @@ img {
 
 #playerQuote {
     font-size: 20px;
+    padding: 10px;
 }
 
 .rpsButton {
     height: 30px;
-    width: 120px;
+    width: 100px;
 }
 
 #playerSpeech {
