@@ -79,3 +79,53 @@ img {
     font-size: 40px;
     font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+
+#butterImg {
+    flex: 0 0 50%;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#butterResultImg {
+    flex: 0 0 50%;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#butterHealthPoint {
+    font-size: 25px;
+}
+
+#botQuote {
+    font-size: 30px;
+}
+
+.rpsButton {
+    height: 30px;
+    width: 140px;
+}
+
+#botSpeech {
+    margin-left: 180px;
+    font-size: 15px;
+}
+
+#botResultImg {
+    flex: 0 0 50%;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#botImg {
+    flex: 0 0 50%;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#botHealthPoint {
+    font-size: 25px;
+}
+
+}
