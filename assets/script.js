@@ -20,6 +20,8 @@ let inputHP = null;
 let butterHp = inputHP;
 let playerHp = inputHP;
 
+window.onload = audioPlayBG();
+
 userInputHp();
 
 //check win status on submitting rock
