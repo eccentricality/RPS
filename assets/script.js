@@ -22,7 +22,6 @@ let playerHp = inputHP;
 
 userInputHp();
 
-
 //check win status on submitting rock
 rockButtonElm.addEventListener('click', function(){
     audioPlayBG();
