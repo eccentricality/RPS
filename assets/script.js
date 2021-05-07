@@ -1,153 +1,93 @@
 const rpsBodyElm = document.getElementById("rpsBody")
-const botQuoteElm = document.getElementById("botQuote")
+const playerQuoteElm = document.getElementById("playerQuote")
 const rockButtonElm = document.getElementById("rockButton")
 const paperButtonElm = document.getElementById("paperButton")
 const scissorButtonElm = document.getElementById("scissorButton")
+const playerResultImgElm = document.getElementById("playerResultImg")
+const butterResultImgElm = document.getElementById("butterResultImg")
 const butterHpSpanElm = document.getElementById("butterHpSpan")
 const playerHpSpanElm = document.getElementById("playerHpSpan")
-const botResultImgElm = document.getElementById("botResultImg")
-const butterResultImgElm = document.getElementById("butterResultImg")
 
 let randomThrowResult = null;
 let overallThrowResult = null;
 let playerThrowResult = null;
 let butterThrowResult = null;
-let butterHp = butterHpSpanElm
-let playerHp = playerHpSpanElm
+let butterHp = 2;
+let playerHp = 2;
 
-butterHp = 20;
-playerHp = 20;
+window.onload = setButterHp();
+window.onload = setPlayerHp();
 
-butterHpSpanElm.innerText = butterHp;
-playerHpSpanElm.innerText = playerHp;
-
-rpsBodyElm.addEventListener("submit", e => {
-    e.preventDefault();
-})
-
-//check win status on rock push
+//check win status on submitting rock
 rockButtonElm.addEventListener('click', function(){
-
     playerThrowResult = "Rock";
-    chgBotResultImgRock();
+    chgplayerResultImgRock();
     butterThrowResult = butterThrow();
     if (butterThrowResult === "Rock") {
         chgButterResultImgRock();
-        botQuoteElm.innerText = "(butter is still)";
-        chgBotResultImgRock();
+        playerQuoteElm.innerText = "(butter is still)";
+        chgplayerResultImgRock();
     }
     else if (butterThrowResult === "Paper") {
+        playerDecrement();
         chgButterResultImgPaper();
-        botQuoteElm.innerText = "(butter jiggles maliciously)";
-        playerHpSpanElm.innerText = playerHp--;
+        playerQuoteElm.innerText = "(butter jiggles maliciously)";
         chgBgPlayerHurt();
-    }
-    else if (butterThrowResult === "Scissor") {
-        chgButterResultImgScissor();
-        botQuoteElm.innerText = "(butter winces in pain)";
-        butterHpSpanElm.innerText = butterHp--;
-        chgBgButterHurt();
-    }
-})
-
-//check win status on paper push
-paperButtonElm.addEventListener('click', function(){
-    playerThrowResult = "Paper";
-    chgBotResultImgPaper();
-    butterThrowResult = butterThrow();
-    if (butterThrowResult === "Rock") {
-        chgButterResultImgRock();
-        botQuoteElm.innerText = "(butter snorts in fury)";
-        butterHpSpanElm.innerText = butterHp--;
-        chgBgButterHurt();
-    }
-    else if (butterThrowResult === "Paper") {
-        chgButterResultImgPaper();
-        botQuoteElm.innerText = "(butter is not margarine)";
-        chgBotResultImgPaper();
-    }
-    else if (butterThrowResult === "Scissor") {
-        chgButterResultImgScissor();
-        botQuoteElm.innerText = "(butter cackles)";
-        playerHpSpanElm.innerText = playerHp--;
-        chgBgPlayerHurt();
-    }
-})
-
-//check win status on scissor push
-scissorButtonElm.addEventListener('click', function(){
-    playerThrowResult = "Scissor";
-    chgBotResultImgScissor();
-    butterThrowResult = butterThrow();
-    if (butterThrowResult === "Rock") {
-        chgButterResultImgRock();
-        botQuoteElm.innerText = "(butter is mocking you)";
-        playerHpSpanElm.innerText = playerHp--;
-        chgBgPlayerHurt();
-    }
-    else if (butterThrowResult === "Paper") {
-        chgButterResultImgPaper();
-        botQuoteElm.innerText = "(butter curses at you)";
-        butterHpSpanElm.innerText = butterHp--;
-        chgBgButterHurt();
-    }
-    else if (butterThrowResult === "Scissor") {
-        chgButterResultImgScissor();
-        botQuoteElm.innerText = "(butter is at room temp)";
-    }
-})
-
-//generate butter throw
-function butterThrow(){
-    let randomThrow = Math.floor(Math.random() * 10);
-    let randomThrowResult = null;
-    
-    if (randomThrow >= 1 && randomThrow <= 3) {
-        randomThrowResult = "Rock";
-    }
-    else if (randomThrow >= 4 && randomThrow <= 6) {
-        randomThrowResult = "Paper";
     }
     else {
-        randomThrowResult = "Scissor";
+        butterDecrement();
+        chgButterResultImgScissor();
+        playerQuoteElm.innerText = "(butter winces in pain)";
+        chgBgButterHurt();
     }
-    return randomThrowResult
-}
+})
 
-//changes color depending who gets hurt
-function chgBgButterHurt(){
-    document.body.style.backgroundColor = "yellow";
-    document.getElementById("rpsBody").style.backgroundColor = "yellow";
-}
+//check win status on submitting paper
+paperButtonElm.addEventListener('click', function(){
+    playerThrowResult = "Paper";
+    chgplayerResultImgPaper();
+    butterThrowResult = butterThrow();
+    if (butterThrowResult === "Rock") {
+        butterDecrement();
+        chgButterResultImgRock();
+        playerQuoteElm.innerText = "(butter snorts in fury)";
+        chgBgButterHurt();
+    }
+    else if (butterThrowResult === "Paper") {
+        chgButterResultImgPaper();
+        playerQuoteElm.innerText = "(butter is not margarine)";
+        chgplayerResultImgPaper();
+    }
+    else {
+        playerDecrement();
+        chgButterResultImgScissor();
+        playerQuoteElm.innerText = "(butter cackles)";
+        chgBgPlayerHurt();
+    }
+})
 
-function chgBgPlayerHurt(){
-    document.body.style.backgroundColor = "red";
-    document.getElementById("rpsBody").style.backgroundColor = "red";
-}
-
-function chgBotResultImgRock(){
-    botResultImgElm.src = "./assets/images/rock.png"
-}
-
-function chgBotResultImgPaper(){
-    botResultImgElm.src = "./assets/images/paper.png"
-}
-
-function chgBotResultImgScissor(){
-    botResultImgElm.src = "./assets/images/scissor.png"
-}
-
-function chgButterResultImgRock(){
-    butterResultImgElm.src = "./assets/images/rock.png"
-}
-
-function chgButterResultImgPaper(){
-    butterResultImgElm.src = "./assets/images/paper.png"
-}
-
-function chgButterResultImgScissor(){
-    butterResultImgElm.src = "./assets/images/scissor.png"
-}
+//check win status on submitting scissor
+scissorButtonElm.addEventListener('click', function(){
+    playerThrowResult = "Scissor";
+    chgplayerResultImgScissor();
+    butterThrowResult = butterThrow();
+    if (butterThrowResult === "Rock") {
+        playerDecrement();
+        chgButterResultImgRock();
+        playerQuoteElm.innerText = "(butter is mocking you)";
+        chgBgPlayerHurt();
+    }
+    else if (butterThrowResult === "Paper") {
+        butterDecrement();
+        chgButterResultImgPaper();
+        playerQuoteElm.innerText = "(butter curses at you)";
+        chgBgButterHurt();
+    }
+    else {
+        chgButterResultImgScissor();
+        playerQuoteElm.innerText = "(butter is at room temp)";
+    }
+})
 
 //changes background back to original to make it look like white was flash
 rockButtonElm.addEventListener("click", function(){
@@ -173,3 +113,86 @@ scissorButtonElm.addEventListener("click", function(){
         self.style.background = oldBg;
     }, 15);
 })
+
+//generate butter throw
+function butterThrow(){
+    let randomThrow = Math.floor(Math.random() * 10);
+    let randomThrowResult = null;
+    
+    if (randomThrow >= 1 && randomThrow <= 3) {
+        randomThrowResult = "Rock";
+    }
+    else if (randomThrow >= 4 && randomThrow <= 6) {
+        randomThrowResult = "Paper";
+    }
+    else {
+        randomThrowResult = "Scissor";
+    }
+    return randomThrowResult
+}
+
+//changes color depending who gets hurt
+function setButterHp(){
+    butterHpSpanElm.innerText = butterHp;
+}
+function setPlayerHp(){
+    playerHpSpanElm.innerText = playerHp;
+}
+
+function chgBgButterHurt(){
+    document.body.style.backgroundColor = "yellow";
+    document.getElementById("rpsBody").style.backgroundColor = "yellow";
+}
+
+function chgBgPlayerHurt(){
+    document.body.style.backgroundColor = "red";
+    document.getElementById("rpsBody").style.backgroundColor = "red";
+}
+
+function chgplayerResultImgRock(){
+    playerResultImgElm.src = "./assets/images/rock.png"
+}
+
+function chgplayerResultImgPaper(){
+    playerResultImgElm.src = "./assets/images/paper.png"
+}
+
+function chgplayerResultImgScissor(){
+    playerResultImgElm.src = "./assets/images/scissor.png"
+}
+
+function chgButterResultImgRock(){
+    butterResultImgElm.src = "./assets/images/rock.png"
+}
+
+function chgButterResultImgPaper(){
+    butterResultImgElm.src = "./assets/images/paper.png"
+}
+
+function chgButterResultImgScissor(){
+    butterResultImgElm.src = "./assets/images/scissor.png"
+}
+
+function butterDecrement(){
+    if(butterHp >= 0){
+        butterHpSpanElm.innerText = butterHp--;
+    }
+    return butterHp;
+}
+
+function playerDecrement(){
+    if(playerHp >= 0){
+        playerHpSpanElm.innerText = playerHp--;
+    }
+    return playerHp;
+}
+
+function youWin(){
+    alert("You Win!");
+    location.reload();
+}
+
+function youLose(){
+    alert("You Lose!");
+    location.reload();
+}

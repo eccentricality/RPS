@@ -33,29 +33,29 @@ img {
     background-color: var(--dtPurple1);
 }
 
-#botQuote {
+#playerQuote {
     font-weight: bold;
     font-size: 40px;
     border: 0;
     padding: 20px;
 }
 
-#botSpeech {
+#playerSpeech {
     margin-left: 280px;
     font-size: 20px;
 }
 
-#botImg {
+#butterImg {
     display: block;
     display: inline-block;
 }
 
-#botResultImg {
+#butterResultImg {
     display: block;
     display: inline-block;
 }
 
-#botImg {
+#playerImg {
     display: block;
     display: inline-block;
 }
@@ -75,7 +75,7 @@ img {
     font-weight: bold;
 }
 
-#botHealthPoint {
+#playerHealthPoint {
     font-size: 40px;
     font-weight: bold;
 }
@@ -98,7 +98,7 @@ img {
     font-size: 25px;
 }
 
-#botQuote {
+#playerQuote {
     font-size: 30px;
 }
 
@@ -107,24 +107,24 @@ img {
     width: 140px;
 }
 
-#botSpeech {
+#playerSpeech {
     margin-left: 180px;
     font-size: 15px;
 }
 
-#botResultImg {
+#playerResultImg {
     flex: 0 0 50%;
     max-width: 100px;
     max-height: 100px;
 }
 
-#botImg {
+#playerImg {
     flex: 0 0 50%;
     max-width: 100px;
     max-height: 100px;
 }
 
-#botHealthPoint {
+#playerHealthPoint {
     font-size: 25px;
 }
 

@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Interactive Rock Paper Scissors Game</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./assets/reset.css">
@@ -17,27 +17,28 @@
     <body id="rpsBody">
 
         <container>
-            <player>
+            <butter>
                 <h1 class="butterQuote"></h1>
                 <br/><br/><img src="./assets/images/butter.png" id="butterImg"/>
                 <img src="./assets/images/rock.png" id="butterResultImg"/>
-                <p id="butterHealthPoint">Butter HP: <span id="butterHpSpan">20</span></p>
-            </player>
-            <bot>
-                <h1 id="botQuote">What is my purpose?</h1>
+                <p id="butterHealthPoint">Butter HP: <span id="butterHpSpan"></span></p>
+            </butter>
+            <player>
+                <h1 id="playerQuote">What is my purpose?</h1>
                 <button id="rockButton" class="rpsButton">Rock</button>
                 <button id="paperButton" class="rpsButton">Paper</button>
                 <button id="scissorButton" class="rpsButton">Scissor</button>
-                <p id="botSpeech">Oh...my god...</p>
-                <img src="./assets/images/rock.png" id="botResultImg"/>
-                <img src="./assets/images/rpsBot.png" id="botImg"/>
-                <p id="botHealthPoint">Player HP: <span id="playerHpSpan">20</span></p>
-            </bot>
+                <p id="playerSpeech">Oh...my god...</p>
+                <img src="./assets/images/rock.png" id="playerResultImg"/>
+                <img src="./assets/images/rpsbot.png" id="playerImg"/>
+                <p id="playerHealthPoint">Player HP: <span id="playerHpSpan"></span></p>
+            </player>
             <br/>
             <br/>
         </container>
 
-        <script src="./assets/script.js" async defer></script>
+        <script src="./assets/script.js" async defer>
+        </script>
     </body>
 
 </html>
