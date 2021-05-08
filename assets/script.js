@@ -8,6 +8,8 @@ const butterResultImgElm = document.getElementById("butterResultImg")
 const butterHpSpanElm = document.getElementById("butterHpSpan")
 const playerHpSpanElm = document.getElementById("playerHpSpan")
 const bgMusicElm = document.getElementById("bgMusic")
+const bgMusicWinElm = document.getElementById("bgMusicWin")
+const bgMusicLoseElm = document.getElementById("bgMusicLose")
 const butterHitMusicElm = document.getElementById("butterHit")
 const playerHitMusicElm = document.getElementById("playerHit")
 const missHitMusicElm = document.getElementById("missHit")
@@ -170,6 +172,20 @@ function audioPlayBG(){
     bgMusicElm.play();
 }
 
+function audioStopBG(){
+    bgMusicElm.pause();
+}
+
+function audioPlayWin(){
+    bgMusicWinElm.volume = .4;
+    bgMusicWinElm.play();
+}
+
+function audioPlayLose(){
+    bgMusicLoseElm.volume = .4;
+    bgMusicLoseElm.play();
+}
+
 function audioPlayButterHit(){
     butterHitMusicElm.volume = .4;
     butterHitMusicElm.play();
@@ -187,12 +203,10 @@ function audioPlayMissHit(){
 
 //changes color depending who gets hurt
 function chgBgButterHurt(){
-    document.body.style.backgroundColor = "yellow";
     document.getElementById("rpsBody").style.backgroundColor = "yellow";
 }
 
 function chgBgPlayerHurt(){
-    document.body.style.backgroundColor = "red";
     document.getElementById("rpsBody").style.backgroundColor = "red";
 }
 
@@ -234,12 +248,37 @@ function playerDecrement(){
     }
 }
 
+function winBgChange(){
+    setInterval(
+        function() {
+          var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+          document.body.style.backgroundColor = "#" + randomColor;
+        }, 120);
+}
+
 function youWin(){
-    alert("You Win!");
-    location.reload();
+    if(butterHp == 0) {
+        audioStopBG();
+        audioPlayWin();
+        setTimeout(function(){
+            alert("You Win!");
+            document.location.reload();
+        }, 30);   
+    }
 }
 
 function youLose(){
-    alert("You Lose!");
-    location.reload();
+    if(playerHp == 0) {
+        audioStopBG();
+        audioPlayLose();
+        setTimeout(function(){
+            alert("You Lose!");
+            document.location.reload();
+        }, 30);
+    }
 }
+
+rpsBodyElm.addEventListener("click", function() {
+    youWin();
+    youLose();
+})
