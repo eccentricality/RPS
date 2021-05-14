@@ -248,22 +248,15 @@ function playerDecrement(){
     }
 }
 
-function winBgChange(){
-    setInterval(
-        function() {
-          var randomColor = Math.floor(Math.random() * 16777215).toString(16);
-          document.body.style.backgroundColor = "#" + randomColor;
-        }, 120);
-}
-
 function youWin(){
     if(butterHp == 0) {
         audioStopBG();
         audioPlayWin();
+        winBgChange();
         setTimeout(function(){
             alert("You Win!");
             document.location.reload();
-        }, 30);   
+        }, 30);  
     }
 }
 
@@ -282,3 +275,11 @@ rpsBodyElm.addEventListener("click", function() {
     youWin();
     youLose();
 })
+
+function winBgChange(){
+    setInterval(
+        function() {
+          var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+          document.body.style.backgroundColor = "#" + randomColor;
+        }, 120);
+}
